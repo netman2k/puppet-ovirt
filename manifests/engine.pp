@@ -114,7 +114,7 @@ class ovirt::engine(
     ],
     refreshonly => true,
     path        => '/usr/bin/:/bin/:/sbin:/usr/sbin',
-    command     => "yes 'Yes' | engine-setup --config-append=${answers_file} --accept-defaults",
+    command     => "engine-setup --config-append=${answers_file} --accept-defaults",
     notify      => Service[ovirt-engine],
   }
 }
