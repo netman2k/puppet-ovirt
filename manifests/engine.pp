@@ -81,7 +81,7 @@ class ovirt::engine(
   },
   $websocket_proxy_config   = true,
   $vmconsole_proxy_config   = true,
-  $engine_heap_max          = '8000M',
+  $engine_heap_min          = '8000M',
   $engine_heap_max          = '8000M',
 ) inherits ovirt {
 
