@@ -69,6 +69,7 @@ class ovirt::engine(
   $nfs_config_enabled       = true, # true, false
   $iso_domain_name          = 'ISO_DOMAIN',
   $iso_domain_mount_point   = '/var/lib/exports/iso',
+  $iso_domain_acl           = '*(rw)',
   $admin_password           = 'admin',
   $db_user                  = 'engine',
   $db_password              = 'dbpassword',
@@ -78,8 +79,10 @@ class ovirt::engine(
     /(?i-mx:centos|redhat)/ => 'iptables',
     /(?i-mx:fedora)/        => 'firewalld',
   },
-  $websocket_proxy_config     = true,
-  $vmconsole_proxy_config     = true,
+  $websocket_proxy_config   = true,
+  $vmconsole_proxy_config   = true,
+  $engine_heap_max          = '8000M',
+  $engine_heap_max          = '8000M',
 ) inherits ovirt {
 
   package { 'ovirt-engine':
@@ -111,7 +114,7 @@ class ovirt::engine(
     ],
     refreshonly => true,
     path        => '/usr/bin/:/bin/:/sbin:/usr/sbin',
-    command     => "yes 'Yes' | engine-setup --config-append=${answers_file}",
+    command     => "yes 'Yes' | engine-setup --config-append=${answers_file} --accept-defaults",
     notify      => Service[ovirt-engine],
   }
 }

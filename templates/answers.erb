@@ -10,10 +10,21 @@ OVESETUP_DB/user=str:<%= @db_user %>
 OVESETUP_DB/securedHostValidation=bool:False
 OVESETUP_DB/password=str:<%= @db_password %>
 OVESETUP_DB/port=int:<%= @db_port %>
+OVESETUP_DWH_CORE/enable=bool:True
+OVESETUP_DWH_DB/secured=bool:False
+OVESETUP_DWH_DB/restoreBackupLate=bool:True
+OVESETUP_DWH_DB/disconnectExistingDwh=none:None
+OVESETUP_DWH_DB/host=str:<%= @db_host %>
+OVESETUP_DWH_DB/user=str:<%= @db_user %>
+OVESETUP_DWH_DB/password=str:<%= @db_password %>
+OVESETUP_DWH_DB/database=str:engine
+OVESETUP_DWH_DB/securedHostValidation=bool:False
+OVESETUP_DWH_PROVISIONING/postgresProvisioningEnabled=bool:False
 OVESETUP_SYSTEM/nfsConfigEnabled=bool:<%= @nfs_config_enabled ? "True" : "False" %>
 OVESETUP_PKI/organization=str:<%= @organization %>
 OVESETUP_CONFIG/isoDomainName=str:<%= @iso_domain_name %>
 OVESETUP_CONFIG/isoDomainMountPoint=str:<%= @iso_domain_mount_point %>
+OVESETUP_CONFIG/isoDomainACL=str:<%= @iso_domain_acl %>
 OVESETUP_CONFIG/adminPassword=str:<%= @admin_password %>
 OVESETUP_CONFIG/applicationMode=str:<%= @application_mode %>
 OVESETUP_CONFIG/firewallManager=str:<%= @firewall_manager %>
@@ -22,11 +33,16 @@ OVESETUP_CONFIG/imageioProxyConfig=bool:<%= @websocket_proxy_config %>
 OVESETUP_CONFIG/fqdn=str:<%= @fqdn %>
 OVESETUP_CONFIG/storageType=str:<%= @storage_type %>
 OVESETUP_VMCONSOLE_PROXY_CONFIG/vmconsoleProxyConfig=bool:<%= @vmconsole_proxy_config %>
-OVESETUP_PROVISIONING/postgresProvisioningEnabled=bool:True
+OVESETUP_PROVISIONING/postgresProvisioningEnabled=bool:False
 OVESETUP_APACHE/configureRootRedirection=bool:True
 OVESETUP_APACHE/configureSsl=bool:True
 OSETUP_RPMDISTRO/requireRollback=none:None
 OSETUP_RPMDISTRO/enableUpgrade=none:None
 OVESETUP_AIO/configure=none:None
 OVESETUP_AIO/storageDomainDir=none:None
-
+<%- if @engine_heap_min -%>
+OVESETUP_CONFIG/engineHeapMin=str:<%= @engine_heap_mix %>
+<%- end -%>
+<%- if @engine_heap_max -%>
+OVESETUP_CONFIG/engineHeapMax=str:<%= @engine_heap_max %>
+<%- end -%>
