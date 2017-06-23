@@ -17,9 +17,11 @@ OVESETUP_CONFIG/isoDomainMountPoint=str:<%= @iso_domain_mount_point %>
 OVESETUP_CONFIG/adminPassword=str:<%= @admin_password %>
 OVESETUP_CONFIG/applicationMode=str:<%= @application_mode %>
 OVESETUP_CONFIG/firewallManager=str:<%= @firewall_manager %>
-OVESETUP_CONFIG/websocketProxyConfig=none:None
+OVESETUP_CONFIG/websocketProxyConfig=bool:<%= @websocket_proxy_config %>
+OVESETUP_CONFIG/imageioProxyConfig=bool:<%= @websocket_proxy_config %>
 OVESETUP_CONFIG/fqdn=str:<%= @fqdn %>
 OVESETUP_CONFIG/storageType=str:<%= @storage_type %>
+OVESETUP_VMCONSOLE_PROXY_CONFIG/vmconsoleProxyConfig=bool:<%= @vmconsole_proxy_config %>
 OVESETUP_PROVISIONING/postgresProvisioningEnabled=bool:True
 OVESETUP_APACHE/configureRootRedirection=bool:True
 OVESETUP_APACHE/configureSsl=bool:True
@@ -27,3 +29,4 @@ OSETUP_RPMDISTRO/requireRollback=none:None
 OSETUP_RPMDISTRO/enableUpgrade=none:None
 OVESETUP_AIO/configure=none:None
 OVESETUP_AIO/storageDomainDir=none:None
+

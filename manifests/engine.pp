@@ -77,7 +77,9 @@ class ovirt::engine(
   $firewall_manager = $::operatingsystem ? {
     /(?i-mx:centos|redhat)/ => 'iptables',
     /(?i-mx:fedora)/        => 'firewalld',
-  }
+  },
+  $websocket_proxy_config     = true,
+  $vmconsole_proxy_config     = true,
 ) inherits ovirt {
 
   package { 'ovirt-engine':
